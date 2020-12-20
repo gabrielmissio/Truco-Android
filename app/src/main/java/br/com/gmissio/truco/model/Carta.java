@@ -4,6 +4,16 @@ public class Carta {
     String nome;
     int peso;
     int naipe;//0 - copas | 1 - ouro | 2 - paus | 3 - espada
+
+    public int getIdImage() {
+        return idImage;
+    }
+
+    public void setIdImage(int idImage) {
+        this.idImage = idImage;
+    }
+
+    private int idImage;
     //camiho ou value of the image
 
     public Carta() {

@@ -1,10 +1,21 @@
 package br.com.gmissio.truco.model;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Baralho {
+
+    public List<Carta> getList_baralho() {
+        return list_baralho;
+    }
 
     List<Carta> list_baralho = new ArrayList<>();
 
@@ -39,10 +50,10 @@ public class Baralho {
     //0 - copas | 1 - ouro | 2 - paus | 3 - espada
     private void cartasEspeciais() {
         //String nome, int peso, int naipe
-        Carta espadadao = new Carta("espadao", 16, 3);
-        Carta pauzao = new Carta("pauzao", 15, 2);
-        Carta sete_faca = new Carta("7 faca", 14, 3);
-        Carta sete_belo = new Carta("7 belo", 13, 1);
+        Carta espadadao = new Carta("3", 16, 3);
+        Carta pauzao = new Carta("2", 15, 2);
+        Carta sete_faca = new Carta("7", 14, 3);
+        Carta sete_belo = new Carta("7", 13, 1);
         list_baralho.add(espadadao);
         list_baralho.add(pauzao);
         list_baralho.add(sete_belo);

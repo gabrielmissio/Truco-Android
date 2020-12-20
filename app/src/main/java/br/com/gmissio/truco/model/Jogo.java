@@ -81,7 +81,6 @@ public class Jogo {
     public void distribuirCartas() {
 
         System.out.println("distribui###");
-        baralho.gerarBaralho();
         System.out.println(baralho.toString());
         for(int i = 0; i < 3; i++) {
             for(int j = 0; j < numJogadores; j++) {
@@ -111,6 +110,10 @@ public class Jogo {
     public String toString() {
         // TODO Auto-generated method stub
         return jogadores.toString();
+    }
+
+    public void oneVsCpu(){
+
     }
 
 }
