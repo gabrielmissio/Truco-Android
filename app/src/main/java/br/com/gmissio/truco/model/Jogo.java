@@ -13,6 +13,7 @@ public class Jogo {
     int numJogada;
     List<String> controleRodada = new ArrayList<>();
 
+
     public Jogo() {
 
     }
@@ -105,6 +106,10 @@ public class Jogo {
 
     }
 
+    public void reserControleRodada(){
+
+        this.controleRodada.clear();
+    }
 
 
     public void rodadaCpu() {

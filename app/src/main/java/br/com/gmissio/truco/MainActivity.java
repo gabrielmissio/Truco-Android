@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
         card3.setImageResource(jogador.getCartas().get(2).getIdImage());//cada jogador sempre começara com 3 cartas
 
         Jogador cpu = jogo.getJogadores().get(1);
-
+        System.out.println("-------------------aquis");
 
     }
 
@@ -206,7 +206,31 @@ public class MainActivity extends AppCompatActivity {
             pontosTimeA.setText(String.valueOf(jogo.getPontosTimeA()));
             pontosTimeB.setText(String.valueOf(jogo.getPontosTimeB()));
             //pontosTimeB.setText(jogo.getPontosTimeB());
+            reset();
         }
+
+    }
+
+    public void reset(){
+        jogo.reserControleRodada();
+        jogo.getBaralho().gerarBaralho();
+        startGame();
+
+        card1.setVisibility(View.VISIBLE);
+        card2.setVisibility(View.VISIBLE);
+        card3.setVisibility(View.VISIBLE);
+
+        imgCard4.setVisibility(View.VISIBLE);
+        imgCard5.setVisibility(View.VISIBLE);
+        imgCard6.setVisibility(View.VISIBLE);
+
+        imgCard1Cpu.setVisibility(View.INVISIBLE);
+        imgCard2Cpu.setVisibility(View.INVISIBLE);
+        imgCard3Cpu.setVisibility(View.INVISIBLE);
+
+        imgCard1Player.setVisibility(View.INVISIBLE);
+        imgCard2Player.setVisibility(View.INVISIBLE);
+        imgCard3Player.setVisibility(View.INVISIBLE);
 
     }
 
