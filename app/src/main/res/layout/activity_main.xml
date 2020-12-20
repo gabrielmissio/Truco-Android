@@ -34,7 +34,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.7" />
+        app:layout_constraintGuide_percent="0.65" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline07"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline08"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.50" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline09"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25" />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline02"
@@ -42,6 +71,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.33" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.50" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline03"
@@ -59,9 +95,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guideline07"
         app:layout_constraintEnd_toStartOf="@+id/guideline02"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline01"
@@ -76,9 +111,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guideline07"
         app:layout_constraintEnd_toStartOf="@+id/guideline03"
         app:layout_constraintStart_toStartOf="@+id/guideline02"
         app:layout_constraintTop_toTopOf="@+id/guideline01"
@@ -93,9 +127,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guideline07"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline03"
         app:layout_constraintTop_toTopOf="@+id/guideline01"
@@ -105,7 +138,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Time A"
+        android:text="You"
         app:layout_constraintBottom_toTopOf="@+id/guideline04"
         app:layout_constraintEnd_toStartOf="@+id/guideline02"
         app:layout_constraintStart_toStartOf="parent" />
@@ -114,7 +147,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Time B"
+        android:text="Cpu"
         app:layout_constraintBottom_toTopOf="@+id/guideline04"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline03" />
@@ -181,6 +214,109 @@
         app:layout_constraintStart_toStartOf="@+id/guideline03"
         app:layout_constraintTop_toTopOf="@+id/guideline06"
         app:srcCompat="@drawable/back_card" />
+
+    <Button
+        android:id="@+id/btnEnvido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Envido"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline02"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline07" />
+
+    <Button
+        android:id="@+id/btnTruco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Truco"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline03"
+        app:layout_constraintTop_toTopOf="@+id/guideline07" />
+
+    <ImageView
+        android:id="@+id/imgCard1Player"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/guideline09"
+        app:layout_constraintEnd_toStartOf="@+id/guideline02"
+        app:layout_constraintTop_toTopOf="@+id/guideline08"
+        app:srcCompat="@drawable/back_card" />
+
+    <ImageView
+        android:id="@+id/imgCard2Player"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/guideline09"
+        app:layout_constraintEnd_toStartOf="@+id/guideline03"
+        app:layout_constraintStart_toStartOf="@+id/guideline02"
+        app:layout_constraintTop_toTopOf="@+id/guideline08"
+        app:srcCompat="@drawable/back_card" />
+
+    <ImageView
+        android:id="@+id/imgCard3Player"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/guideline09"
+        app:layout_constraintStart_toStartOf="@+id/guideline03"
+        app:layout_constraintTop_toTopOf="@+id/guideline08"
+        app:srcCompat="@drawable/back_card" />
+
+    <ImageView
+        android:id="@+id/imgCard1Cpu"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/guideline08"
+        app:layout_constraintEnd_toStartOf="@+id/guideline02"
+        app:layout_constraintTop_toTopOf="@+id/guideline10"
+        app:srcCompat="@drawable/back_card" />
+
+    <ImageView
+        android:id="@+id/imgCard2Cpu"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/guideline08"
+        app:layout_constraintEnd_toStartOf="@+id/guideline03"
+        app:layout_constraintStart_toStartOf="@+id/guideline02"
+        app:layout_constraintTop_toTopOf="@+id/guideline10"
+        app:srcCompat="@drawable/back_card" />
+
+    <ImageView
+        android:id="@+id/imgCard3Cpu"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/guideline08"
+        app:layout_constraintStart_toStartOf="@+id/guideline03"
+        app:layout_constraintTop_toTopOf="@+id/guideline10"
+        app:srcCompat="@drawable/back_card" />
+
+    <ImageView
+        android:id="@+id/cardsInYouSide"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/guideline06"
+        app:layout_constraintEnd_toStartOf="@+id/guideline11"
+        app:layout_constraintStart_toStartOf="@+id/guideline02"
+        app:layout_constraintTop_toTopOf="@+id/guideline04"
+        app:srcCompat="@drawable/baralho" />
+
+    <ImageView
+        android:id="@+id/cardsInCpuSide"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline06"
+        app:layout_constraintEnd_toStartOf="@+id/guideline03"
+        app:layout_constraintStart_toStartOf="@+id/guideline11"
+        app:layout_constraintTop_toTopOf="@+id/guideline04"
+        app:srcCompat="@drawable/baralho" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
