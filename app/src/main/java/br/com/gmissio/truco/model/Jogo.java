@@ -11,6 +11,7 @@ public class Jogo {
     int pontosTimeA = 0;
     int pontosTimeB = 0;
     int numJogada;
+    List<String> controleRodada = new ArrayList<>();
 
     public Jogo() {
 
@@ -35,7 +36,21 @@ public class Jogo {
         }
         System.out.println("Jogadores criados com sucesso!");
     }
+    public int getNumJogada() {
+        return numJogada;
+    }
 
+    public void setNumJogada(int numJogada) {
+        this.numJogada = numJogada;
+    }
+
+    public List<String> getControleRodada() {
+        return controleRodada;
+    }
+
+    public void setControleRodada(List<String> controleRodada) {
+        this.controleRodada = controleRodada;
+    }
 
 
     public int getNumJogadores() {
@@ -114,8 +129,46 @@ public class Jogo {
         return jogadores.toString();
     }
 
-    public void oneVsCpu(){
+    public Carta cpuPlayCard(){
+
+        return jogadores.get(1).getCartas().get(controleRodada.size());
+    }
+
+    public boolean oneVsCpu(Carta cardPlayer, Carta cardCpu){
+        String vencedor = "Empata";
+        if(cardPlayer.getPeso() > cardCpu.getPeso()){
+            controleRodada.add("Time A");
+        }else if(cardPlayer.getPeso() < cardCpu.getPeso()){
+            controleRodada.add("Time B");
+        }else{
+            controleRodada.add("Empardou");
+        }
+        return checkVitory();
 
     }
+
+    private boolean checkVitory(){
+        int timeA = 0;
+        int timeB = 0;
+        if(controleRodada.size() > 1){
+            for (String x : controleRodada) {
+                if(x == "Time A"){
+                    timeA++;
+                }else if(x == "Time B"){
+                    timeB++;
+                }
+            }
+            if(timeA > 1){
+                pontosTimeA++;
+                return true;
+            }else if(timeB > 1){
+                pontosTimeB++;
+                return true;
+            }
+        }
+        return false;
+
+    }
+
 
 }

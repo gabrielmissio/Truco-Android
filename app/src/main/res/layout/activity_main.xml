@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.65" />
+        app:layout_constraintGuide_percent="0.70" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline07"
@@ -55,14 +55,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.75" />
+        app:layout_constraintGuide_percent="0.7" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25" />
+        app:layout_constraintGuide_percent="0.3" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -184,7 +184,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline04" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imgCard4"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -195,7 +195,7 @@
         app:srcCompat="@drawable/back_card" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imgCard5"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline05"
@@ -205,7 +205,7 @@
         app:srcCompat="@drawable/back_card" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/imgCard6"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginEnd="16dp"
