@@ -153,24 +153,7 @@ public class MainActivity extends AppCompatActivity {
         Carta cartaJogada = jogador.getCartas().get(indexCard);
         Carta cartaCpu = jogo.cpuPlayCard();
 
-        switch (cardRodada){
-            case 0:
-                imgCard4.setVisibility(View.INVISIBLE);
-                imgCard1Cpu.setVisibility(View.VISIBLE);
-                imgCard1Cpu.setImageResource(cartaCpu.getIdImage());
-                break;
-            case 1:
-                imgCard5.setVisibility(View.INVISIBLE);
-                imgCard2Cpu.setVisibility(View.VISIBLE);
-                imgCard2Cpu.setImageResource(cartaCpu.getIdImage());
-                break;
-            case 2:
-                imgCard6.setVisibility(View.INVISIBLE);
-                imgCard3Cpu.setVisibility(View.VISIBLE);
-                imgCard3Cpu.setImageResource(cartaCpu.getIdImage());
-                break;
-
-        }
+        cpuJoga();
 
         switch (indexCard){
 
@@ -233,12 +216,25 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
         }
+
         if(jogo.oneVsCpu(cartaJogada, cartaCpu)){
             System.out.println("Pontooooo: " + jogo.getPontosTimeA() + " --- " + jogo.getPontosTimeB());
             pontosTimeA.setText(String.valueOf(jogo.getPontosTimeA()));
             pontosTimeB.setText(String.valueOf(jogo.getPontosTimeB()));
             //pontosTimeB.setText(jogo.getPontosTimeB());
             reset();
+        }
+
+        if(jogo.compareCards(cartaJogada, cartaCpu) == 1){
+            Toast toast = Toast.makeText(getApplicationContext(),"*****    -> 1" , Toast.LENGTH_LONG);
+            toast.show();
+        }else if (jogo.compareCards(cartaJogada, cartaCpu) == -1){
+            Toast toast = Toast.makeText(getApplicationContext(),"*****    -> -1" , Toast.LENGTH_LONG);
+            toast.show();
+            cpuJoga();
+        }else{
+            Toast toast = Toast.makeText(getApplicationContext(),"*****    -> 0" , Toast.LENGTH_LONG);
+            toast.show();
         }
 
     }
@@ -272,6 +268,36 @@ public class MainActivity extends AppCompatActivity {
         }else{
             cardsInCpuSide.setVisibility(View.INVISIBLE);
             cardsInYouSide.setVisibility(View.VISIBLE);
+            cpuJoga();
+        }
+
+
+
+    }
+
+    public void cpuJoga(){
+
+        System.out.println("8888888888888888888888 " + jogo.getControleRodada().size());
+        int cardRodada = jogo.getControleRodada().size();
+        Carta cartaCpu = jogo.cpuPlayCard();
+
+        switch (cardRodada){
+            case 0:
+                imgCard4.setVisibility(View.INVISIBLE);
+                imgCard1Cpu.setVisibility(View.VISIBLE);
+                imgCard1Cpu.setImageResource(cartaCpu.getIdImage());
+                break;
+            case 1:
+                imgCard5.setVisibility(View.INVISIBLE);
+                imgCard2Cpu.setVisibility(View.VISIBLE);
+                imgCard2Cpu.setImageResource(cartaCpu.getIdImage());
+                break;
+            case 2:
+                imgCard6.setVisibility(View.INVISIBLE);
+                imgCard3Cpu.setVisibility(View.VISIBLE);
+                imgCard3Cpu.setImageResource(cartaCpu.getIdImage());
+                break;
+
         }
 
     }

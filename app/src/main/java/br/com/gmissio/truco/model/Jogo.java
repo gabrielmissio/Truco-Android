@@ -149,6 +149,15 @@ public class Jogo {
         return jogadores.get(1).getCartas().get(controleRodada.size());
     }
 
+    public int compareCards(Carta cardPlayer, Carta cardCpu){
+        if(cardPlayer.getPeso() > cardCpu.getPeso()){
+            return 1;
+        }else if(cardPlayer.getPeso() < cardCpu.getPeso()){
+            return -1;
+        }
+        return 0;
+    }
+
     public boolean oneVsCpu(Carta cardPlayer, Carta cardCpu){
         String vencedor = "Empata";
         if(cardPlayer.getPeso() > cardCpu.getPeso()){
