@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     ImageView imgCard3Cpu;
     TextView pontosTimeA;
     TextView pontosTimeB;
+    ImageView cardsInCpuSide;
+    ImageView cardsInYouSide;
     Jogo jogo = new Jogo(2);
 
     @Override
@@ -54,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
 
         pontosTimeA = findViewById(R.id.pontosTimeA);
         pontosTimeB = findViewById(R.id.pontosTimeB);
+
+        cardsInCpuSide = findViewById(R.id.cardsInCpuSide);
+        cardsInYouSide = findViewById(R.id.cardsInYouSide);
 
        // textView.append("mais essa");
         System.out.println("---------------------------------");
@@ -260,6 +265,14 @@ public class MainActivity extends AppCompatActivity {
         imgCard1Player.setVisibility(View.INVISIBLE);
         imgCard2Player.setVisibility(View.INVISIBLE);
         imgCard3Player.setVisibility(View.INVISIBLE);
+
+        if(jogo.getPosicaoBaralho() %2 == 0){
+            cardsInCpuSide.setVisibility(View.VISIBLE);
+            cardsInYouSide.setVisibility(View.INVISIBLE);
+        }else{
+            cardsInCpuSide.setVisibility(View.INVISIBLE);
+            cardsInYouSide.setVisibility(View.VISIBLE);
+        }
 
     }
 

@@ -11,6 +11,7 @@ public class Jogo {
     int pontosTimeA = 0;
     int pontosTimeB = 0;
     int numJogada;
+    int posicaoBaralho = 0;
     List<String> controleRodada = new ArrayList<>();
 
 
@@ -40,6 +41,15 @@ public class Jogo {
     public int getNumJogada() {
         return numJogada;
     }
+
+    public int getPosicaoBaralho() {
+        return posicaoBaralho;
+    }
+
+    public void setPosicaoBaralho(int posicaoBaralho) {
+        this.posicaoBaralho = posicaoBaralho;
+    }
+
 
     public void setNumJogada(int numJogada) {
         this.numJogada = numJogada;
@@ -179,6 +189,7 @@ public class Jogo {
         for (Jogador j: this.jogadores) {
             j.getCartas().clear();
         }
+        posicaoBaralho++;
     }
 
 }
