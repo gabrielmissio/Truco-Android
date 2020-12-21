@@ -28,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
     ImageView imgCard3Cpu;
     TextView pontosTimeA;
     TextView pontosTimeB;
-
-    TextView textView;
     Jogo jogo = new Jogo(2);
 
     @Override
@@ -86,8 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void carregarCartas(){
-        jogo.getBaralho().gerarBaralho();
+    public void carregarImagensCartas(){
         for(int i = 0; i < 40; i++){
 
             Carta carta = jogo.getBaralho().getList_baralho().get(i);
@@ -97,6 +94,12 @@ public class MainActivity extends AppCompatActivity {
                     "drawable", getPackageName());
             carta.setIdImage(resourceId);
         }
+    }
+
+
+    public void carregarCartas(){
+        jogo.getBaralho().gerarBaralho();
+        carregarImagensCartas();
         startGame();
 
     }
@@ -109,7 +112,6 @@ public class MainActivity extends AppCompatActivity {
         card2.setImageResource(jogador.getCartas().get(1).getIdImage());
         card3.setImageResource(jogador.getCartas().get(2).getIdImage());//cada jogador sempre começara com 3 cartas
 
-        Jogador cpu = jogo.getJogadores().get(1);
         System.out.println("-------------------aquis");
 
     }
@@ -212,8 +214,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void reset(){
+        jogo.devolverCartas();
         jogo.reserControleRodada();
         jogo.getBaralho().gerarBaralho();
+        carregarImagensCartas();
         startGame();
 
         card1.setVisibility(View.VISIBLE);
@@ -235,10 +239,4 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-}/*
-
- Resources resources = getResources();
-            int resourceId = resources.getIdentifier(referenceCardName.replaceAll(" ", ""),
-                    "drawable", getPackageName());
-            carta.setIdImage(resourceId);
-*/
+}

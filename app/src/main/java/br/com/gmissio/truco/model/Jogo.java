@@ -175,5 +175,10 @@ public class Jogo {
 
     }
 
+    public void devolverCartas(){
+        for (Jogador j: this.jogadores) {
+            j.getCartas().clear();
+        }
+    }
 
 }
