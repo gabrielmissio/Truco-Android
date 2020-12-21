@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import br.com.gmissio.truco.model.Carta;
 import br.com.gmissio.truco.model.Jogador;
@@ -79,6 +80,30 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 System.out.println("card 3 -------------------");
                 playCard(2);
+            }
+        });
+
+        card1.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                tostCard(0);
+                return false;
+            }
+        });
+
+        card2.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                tostCard(1);
+                return false;
+            }
+        });
+
+        card3.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                tostCard(2);
+                return false;
             }
         });
 
@@ -238,5 +263,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void tostCard(int indexCard){
+//                Toast toast = Toast.makeText(getApplicationContext(), "text", Toast.LENGTH_LONG);
+//                toast.show();
+        Jogador jogador = jogo.getJogadores().get(0);
+        Carta cartaJogada = jogador.getCartas().get(indexCard);
+        Toast toast = Toast.makeText(getApplicationContext(), cartaJogada.toString() , Toast.LENGTH_LONG);
+        toast.show();
+
+    }
 
 }
