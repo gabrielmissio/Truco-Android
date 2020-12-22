@@ -10,8 +10,9 @@ public class Jogo {
     List<Jogador> jogadores = new ArrayList<>();
     int pontosTimeA = 0;
     int pontosTimeB = 0;
-    int numJogada;
+    int numJogada = 0;
     int posicaoBaralho = 0;
+    int vez = 0;
     List<String> controleRodada = new ArrayList<>();
 
 
@@ -104,6 +105,15 @@ public class Jogo {
         this.pontosTimeB = pontosTimeB;
     }
 
+
+    public int getVez() {
+        return vez;
+    }
+
+    public void setVez(int vez) {
+        this.vez = vez;
+    }
+
     public void distribuirCartas() {
 
         System.out.println("distribui###");
@@ -146,7 +156,10 @@ public class Jogo {
 
     public Carta cpuPlayCard(){
 
-        return jogadores.get(1).getCartas().get(controleRodada.size());
+        if(controleRodada.size() < 2){
+            return jogadores.get(1).getCartas().get(controleRodada.size());
+        }
+        return jogadores.get(1).getCartas().get(2);
     }
 
     public int compareCards(Carta cardPlayer, Carta cardCpu){
@@ -182,12 +195,21 @@ public class Jogo {
                     timeB++;
                 }
             }
+            this.vez = 0;
             if(timeA > 1){
                 pontosTimeA++;
                 return true;
             }else if(timeB > 1){
                 pontosTimeB++;
                 return true;
+            }else if(controleRodada.contains("Empardou")) {
+                if(controleRodada.contains("Time A")){
+                    pontosTimeA++;
+                    return true;
+                }else if(controleRodada.contains("Time B")){
+                    pontosTimeB++;
+                    return true;
+                }
             }
         }
         return false;

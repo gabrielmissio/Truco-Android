@@ -153,8 +153,6 @@ public class MainActivity extends AppCompatActivity {
         Carta cartaJogada = jogador.getCartas().get(indexCard);
         Carta cartaCpu = jogo.cpuPlayCard();
 
-        cpuJoga();
-
         switch (indexCard){
 
             case 0:
@@ -216,26 +214,43 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
         }
+        new android.os.Handler().postDelayed(
+                new Runnable() {
+                    public void run() {
+                        cpuJoga();
+                        if(jogo.oneVsCpu(cartaJogada, cartaCpu)){
+                            System.out.println("Pontooooo: " + jogo.getPontosTimeA() + " --- " + jogo.getPontosTimeB());
+                            pontosTimeA.setText(String.valueOf(jogo.getPontosTimeA()));
+                            pontosTimeB.setText(String.valueOf(jogo.getPontosTimeB()));
+                            //pontosTimeB.setText(jogo.getPontosTimeB());
+                            if(jogo.getVez() == 0){
+                                new android.os.Handler().postDelayed(
+                                        new Runnable() {
+                                            public void run() {
+                                                reset();
+                                            }
+                                        },
+                                        500);
+                            }
 
-        if(jogo.oneVsCpu(cartaJogada, cartaCpu)){
-            System.out.println("Pontooooo: " + jogo.getPontosTimeA() + " --- " + jogo.getPontosTimeB());
-            pontosTimeA.setText(String.valueOf(jogo.getPontosTimeA()));
-            pontosTimeB.setText(String.valueOf(jogo.getPontosTimeB()));
-            //pontosTimeB.setText(jogo.getPontosTimeB());
-            reset();
-        }
-
-        if(jogo.compareCards(cartaJogada, cartaCpu) == 1){
-            Toast toast = Toast.makeText(getApplicationContext(),"*****    -> 1" , Toast.LENGTH_LONG);
-            toast.show();
-        }else if (jogo.compareCards(cartaJogada, cartaCpu) == -1){
-            Toast toast = Toast.makeText(getApplicationContext(),"*****    -> -1" , Toast.LENGTH_LONG);
-            toast.show();
-            cpuJoga();
-        }else{
-            Toast toast = Toast.makeText(getApplicationContext(),"*****    -> 0" , Toast.LENGTH_LONG);
-            toast.show();
-        }
+                        }
+                        Toast toast = Toast.makeText(getApplicationContext(),String.valueOf(jogo.getControleRodada().size() ), Toast.LENGTH_LONG);
+                        toast.show();
+                        if(jogo.compareCards(cartaJogada, cartaCpu) == 1){
+                            jogo.setVez(0);
+                        }else if (jogo.compareCards(cartaJogada, cartaCpu) == -1){
+                            jogo.setVez(1);
+                            new android.os.Handler().postDelayed(
+                                    new Runnable() {
+                                        public void run() {
+                                            cpuJoga();
+                                        }
+                                    },
+                                    800);
+                        }
+                    }
+                },
+                1000);
 
     }
 
@@ -268,7 +283,13 @@ public class MainActivity extends AppCompatActivity {
         }else{
             cardsInCpuSide.setVisibility(View.INVISIBLE);
             cardsInYouSide.setVisibility(View.VISIBLE);
-            cpuJoga();
+            new android.os.Handler().postDelayed(
+                    new Runnable() {
+                        public void run() {
+                            cpuJoga();
+                        }
+                    },
+                    1000);
         }
 
 
