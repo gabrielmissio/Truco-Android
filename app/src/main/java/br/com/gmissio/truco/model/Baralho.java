@@ -50,8 +50,8 @@ public class Baralho {
     //0 - copas | 1 - ouro | 2 - paus | 3 - espada
     private void cartasEspeciais() {
         //String nome, int peso, int naipe
-        Carta espadadao = new Carta("3", 16, 3);
-        Carta pauzao = new Carta("2", 15, 2);
+        Carta espadadao = new Carta("1", 16, 3);
+        Carta pauzao = new Carta("1", 15, 2);
         Carta sete_faca = new Carta("7", 14, 3);
         Carta sete_belo = new Carta("7", 13, 1);
         list_baralho.add(espadadao);

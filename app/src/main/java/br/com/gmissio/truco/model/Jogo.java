@@ -39,72 +39,30 @@ public class Jogo {
         }
         System.out.println("Jogadores criados com sucesso!");
     }
-    public int getNumJogada() {
-        return numJogada;
-    }
 
     public int getPosicaoBaralho() {
         return posicaoBaralho;
-    }
-
-    public void setPosicaoBaralho(int posicaoBaralho) {
-        this.posicaoBaralho = posicaoBaralho;
-    }
-
-
-    public void setNumJogada(int numJogada) {
-        this.numJogada = numJogada;
     }
 
     public List<String> getControleRodada() {
         return controleRodada;
     }
 
-    public void setControleRodada(List<String> controleRodada) {
-        this.controleRodada = controleRodada;
-    }
-
-
-    public int getNumJogadores() {
-        return numJogadores;
-    }
-
-    public void setNumJogadores(int numJogadores) {
-        this.numJogadores = numJogadores;
-    }
-
     public Baralho getBaralho() {
         return baralho;
-    }
-
-    public void setBaralho(Baralho baralho) {
-        this.baralho = baralho;
     }
 
     public List<Jogador> getJogadores() {
         return jogadores;
     }
 
-    public void setJogadores(List<Jogador> jogadores) {
-        this.jogadores = jogadores;
-    }
-
     public int getPontosTimeA() {
         return pontosTimeA;
-    }
-
-    public void setPontosTimeA(int pontosTimeA) {
-        this.pontosTimeA = pontosTimeA;
     }
 
     public int getPontosTimeB() {
         return pontosTimeB;
     }
-
-    public void setPontosTimeB(int pontosTimeB) {
-        this.pontosTimeB = pontosTimeB;
-    }
-
 
     public int getVez() {
         return vez;
@@ -131,26 +89,9 @@ public class Jogo {
         this.controleRodada.clear();
     }
 
-
-    public void rodadaCpu() {
-        numJogada = 1;
-        for(int i = 0; i < 3; i++) {
-            for(int j = 0; j < numJogadores; j++) {
-
-                System.out.println("Jogada numero: " + numJogada);
-                System.out.println("Jogador " + jogadores.get(0).getNome() + " joga a carta " + jogadores.get(0).getCarta().toString());
-                Jogador jogador = jogadores.get(0);
-                jogadores.remove(0);
-                jogadores.add(jogador);
-                numJogada++;
-            }
-
-        }
-    }
-
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
+
         return jogadores.toString();
     }
 
@@ -172,7 +113,6 @@ public class Jogo {
     }
 
     public boolean oneVsCpu(Carta cardPlayer, Carta cardCpu){
-        String vencedor = "Empata";
         if(cardPlayer.getPeso() > cardCpu.getPeso()){
             controleRodada.add("Time A");
         }else if(cardPlayer.getPeso() < cardCpu.getPeso()){
@@ -189,9 +129,9 @@ public class Jogo {
         int timeB = 0;
         if(controleRodada.size() > 1){
             for (String x : controleRodada) {
-                if(x == "Time A"){
+                if(x.equals("Time A")){
                     timeA++;
-                }else if(x == "Time B"){
+                }else if(x.equals("Time B")){
                     timeB++;
                 }
             }
@@ -202,7 +142,22 @@ public class Jogo {
             }else if(timeB > 1){
                 pontosTimeB++;
                 return true;
-            }else if(controleRodada.contains("Empardou")) {
+            }else if(controleRodada.size() == 3){
+                if(controleRodada.get(0).equals("Time A")){
+                    pontosTimeA++;
+                }else if(controleRodada.get(0).equals("Time B")){
+                    pontosTimeB++;
+                }else if(controleRodada.get(1).equals("Time A")){
+                    pontosTimeA++;
+                }else if(controleRodada.get(1).equals("Time B")){
+                    pontosTimeB++;
+                }else if(controleRodada.get(2).equals("Tima A")){
+                    pontosTimeA++;
+                }else if(controleRodada.get(2).equals("Time B")){
+                    pontosTimeB++;
+                }
+                return true;
+            } else if(controleRodada.contains("Empardou")) {
                 if(controleRodada.contains("Time A")){
                     pontosTimeA++;
                     return true;

@@ -9,14 +9,6 @@ public class Jogador {
     String time;
     String nome;
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public Jogador() {
 
     }
@@ -28,15 +20,6 @@ public class Jogador {
 
     public List<Carta> getCartas() {
         return cartas;
-    }
-    public void setCartas(List<Carta> cartas) {
-        this.cartas = cartas;
-    }
-    public String getTime() {
-        return time;
-    }
-    public void setTime(String time) {
-        this.time = time;
     }
 
     public void addCarta(Carta carta) {
