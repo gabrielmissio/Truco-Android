@@ -247,6 +247,14 @@ public class MainActivity extends AppCompatActivity {
                                         }
                                     },
                                     800);
+                        }else if(jogo.compareCards(cartaJogada, cartaCpu) == 0 && jogo.getVez() == 1){
+                            new android.os.Handler().postDelayed(
+                                    new Runnable() {
+                                        public void run() {
+                                            cpuJoga();
+                                        }
+                                    },
+                                    800);
                         }
                     }
                 },
@@ -280,9 +288,11 @@ public class MainActivity extends AppCompatActivity {
         if(jogo.getPosicaoBaralho() %2 == 0){
             cardsInCpuSide.setVisibility(View.VISIBLE);
             cardsInYouSide.setVisibility(View.INVISIBLE);
+            jogo.setVez(0);
         }else{
             cardsInCpuSide.setVisibility(View.INVISIBLE);
             cardsInYouSide.setVisibility(View.VISIBLE);
+            jogo.setVez(1);
             new android.os.Handler().postDelayed(
                     new Runnable() {
                         public void run() {
