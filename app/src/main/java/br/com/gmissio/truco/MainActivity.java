@@ -1,7 +1,9 @@
 package br.com.gmissio.truco;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
@@ -82,10 +84,12 @@ public class MainActivity extends AppCompatActivity {
 
         card1.setOnLongClickListener(view -> {
             tostCard(0);
+            alertEnvido();
             return false;
         });
 
         card2.setOnLongClickListener(view -> {
+            alertTruco();
             tostCard(1);
             return false;
         });
@@ -204,10 +208,9 @@ public class MainActivity extends AppCompatActivity {
                         System.out.println("Pontooooo: " + jogo.getPontosTimeA() + " --- " + jogo.getPontosTimeB());
                         pontosTimeA.setText(String.valueOf(jogo.getPontosTimeA()));
                         pontosTimeB.setText(String.valueOf(jogo.getPontosTimeB()));
-                        //pontosTimeB.setText(jogo.getPontosTimeB());
                         if(jogo.getVez() == 0){
                             new android.os.Handler().postDelayed(
-                                    () -> reset(),
+                                    this::reset,
                                     500);
                         }
 
@@ -219,11 +222,11 @@ public class MainActivity extends AppCompatActivity {
                     }else if (jogo.compareCards(cartaJogada, cartaCpu) == -1){
                         jogo.setVez(1);
                         new android.os.Handler().postDelayed(
-                                () -> cpuJoga(),
+                                this::cpuJoga,
                                 800);
                     }else if(jogo.compareCards(cartaJogada, cartaCpu) == 0 && jogo.getVez() == 1){
                         new android.os.Handler().postDelayed(
-                                () -> cpuJoga(),
+                                this::cpuJoga,
                                 800);
                     }
                 },
@@ -264,7 +267,7 @@ public class MainActivity extends AppCompatActivity {
             jogo.setVez(1);
             if(jogo.getVez() == 1){
                 new android.os.Handler().postDelayed(
-                    () -> cpuJoga(),
+                        this::cpuJoga,
                     1000);
             }
 
@@ -311,4 +314,71 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void alertTruco(){
+        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+
+        alertDialog.setTitle("Truco");
+
+        alertDialog.setMessage("CPU chamou o jogo");
+
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Quero", new DialogInterface.OnClickListener() {
+
+            public void onClick(DialogInterface dialog, int id) {
+
+                //...
+
+            } });
+
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Não quero", new DialogInterface.OnClickListener() {
+
+            public void onClick(DialogInterface dialog, int id) {
+
+                //...
+
+            }});
+
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Retruco", new DialogInterface.OnClickListener() {
+
+            public void onClick(DialogInterface dialog, int id) {
+
+                //...
+
+            }});
+        alertDialog.show();
+    }
+
+    public void alertEnvido(){
+        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+
+        alertDialog.setTitle("Envido");
+
+        alertDialog.setMessage("CPU chamou os pontos");
+
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Quero", new DialogInterface.OnClickListener() {
+
+            public void onClick(DialogInterface dialog, int id) {
+
+                //...
+
+            } });
+
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Não quero", new DialogInterface.OnClickListener() {
+
+            public void onClick(DialogInterface dialog, int id) {
+
+                //...
+
+            }});
+
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Real envido", new DialogInterface.OnClickListener() {
+
+            public void onClick(DialogInterface dialog, int id) {
+
+                //...
+
+            }});
+        alertDialog.show();
+    }
 }
+
+
