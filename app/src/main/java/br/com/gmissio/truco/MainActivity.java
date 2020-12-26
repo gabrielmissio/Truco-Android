@@ -64,52 +64,35 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("---------------------------------");
         carregarCartas();
 
-        card1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                System.out.println("card 1 -------------------");
-                playCard(0);
-            }
+        card1.setOnClickListener(view -> {
+            System.out.println("card 1 -------------------");
+            playCard(0);
         });
 
-        card2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                System.out.println("card 2 -------------------");
-                playCard(1);
-            }
+        card2.setOnClickListener(view -> {
+            System.out.println("card 2 -------------------");
+            playCard(1);
         });
 
-        card3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        card3.setOnClickListener(view -> {
                 System.out.println("card 3 -------------------");
                 playCard(2);
-            }
+
         });
 
-        card1.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                tostCard(0);
-                return false;
-            }
+        card1.setOnLongClickListener(view -> {
+            tostCard(0);
+            return false;
         });
 
-        card2.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                tostCard(1);
-                return false;
-            }
+        card2.setOnLongClickListener(view -> {
+            tostCard(1);
+            return false;
         });
 
-        card3.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                tostCard(2);
-                return false;
-            }
+        card3.setOnLongClickListener(view -> {
+            tostCard(2);
+            return false;
         });
 
     }
@@ -215,47 +198,33 @@ public class MainActivity extends AppCompatActivity {
 
         }
         new android.os.Handler().postDelayed(
-                new Runnable() {
-                    public void run() {
-                        cpuJoga();
-                        if(jogo.oneVsCpu(cartaJogada, cartaCpu)){
-                            System.out.println("Pontooooo: " + jogo.getPontosTimeA() + " --- " + jogo.getPontosTimeB());
-                            pontosTimeA.setText(String.valueOf(jogo.getPontosTimeA()));
-                            pontosTimeB.setText(String.valueOf(jogo.getPontosTimeB()));
-                            //pontosTimeB.setText(jogo.getPontosTimeB());
-                            if(jogo.getVez() == 0){
-                                new android.os.Handler().postDelayed(
-                                        new Runnable() {
-                                            public void run() {
-                                                reset();
-                                            }
-                                        },
-                                        500);
-                            }
+                () -> {
+                    cpuJoga();
+                    if(jogo.oneVsCpu(cartaJogada, cartaCpu)){
+                        System.out.println("Pontooooo: " + jogo.getPontosTimeA() + " --- " + jogo.getPontosTimeB());
+                        pontosTimeA.setText(String.valueOf(jogo.getPontosTimeA()));
+                        pontosTimeB.setText(String.valueOf(jogo.getPontosTimeB()));
+                        //pontosTimeB.setText(jogo.getPontosTimeB());
+                        if(jogo.getVez() == 0){
+                            new android.os.Handler().postDelayed(
+                                    () -> reset(),
+                                    500);
+                        }
 
-                        }
-                        Toast toast = Toast.makeText(getApplicationContext(),String.valueOf(jogo.getControleRodada().size() ), Toast.LENGTH_LONG);
-                        toast.show();
-                        if(jogo.compareCards(cartaJogada, cartaCpu) == 1){
-                            jogo.setVez(0);
-                        }else if (jogo.compareCards(cartaJogada, cartaCpu) == -1){
-                            jogo.setVez(1);
-                            new android.os.Handler().postDelayed(
-                                    new Runnable() {
-                                        public void run() {
-                                            cpuJoga();
-                                        }
-                                    },
-                                    800);
-                        }else if(jogo.compareCards(cartaJogada, cartaCpu) == 0 && jogo.getVez() == 1){
-                            new android.os.Handler().postDelayed(
-                                    new Runnable() {
-                                        public void run() {
-                                            cpuJoga();
-                                        }
-                                    },
-                                    800);
-                        }
+                    }
+                    Toast toast = Toast.makeText(getApplicationContext(),String.valueOf(jogo.getControleRodada().size() ), Toast.LENGTH_LONG);
+                    toast.show();
+                    if(jogo.compareCards(cartaJogada, cartaCpu) == 1){
+                        jogo.setVez(0);
+                    }else if (jogo.compareCards(cartaJogada, cartaCpu) == -1){
+                        jogo.setVez(1);
+                        new android.os.Handler().postDelayed(
+                                () -> cpuJoga(),
+                                800);
+                    }else if(jogo.compareCards(cartaJogada, cartaCpu) == 0 && jogo.getVez() == 1){
+                        new android.os.Handler().postDelayed(
+                                () -> cpuJoga(),
+                                800);
                     }
                 },
                 1000);
@@ -293,13 +262,12 @@ public class MainActivity extends AppCompatActivity {
             cardsInCpuSide.setVisibility(View.INVISIBLE);
             cardsInYouSide.setVisibility(View.VISIBLE);
             jogo.setVez(1);
-            new android.os.Handler().postDelayed(
-                    new Runnable() {
-                        public void run() {
-                            cpuJoga();
-                        }
-                    },
+            if(jogo.getVez() == 1){
+                new android.os.Handler().postDelayed(
+                    () -> cpuJoga(),
                     1000);
+            }
+
         }
 
 
